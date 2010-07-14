@@ -54,6 +54,17 @@ points(Name, 2) :-
   selected_qualifier(Name, Team),
   qualifier(Team).
 
+% Correct finalists
+points(Name, 7) :-
+  selected_finalist(Name, Team),
+  finalist(Team).
+points(Name, 1) :-
+  selected_finalist(Name, Team1),
+  selected_finalist(Name, Team2),
+  Team1 \= Team2,
+  finalist(Team1),
+  finalist(Team2).
+
 % Sum of a list
 sum([], 0).
 sum([E|L], Sum) :-
